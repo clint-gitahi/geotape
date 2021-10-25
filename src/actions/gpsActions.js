@@ -1,4 +1,5 @@
 export const Save_Measurements = 'Save_Measurements';
+export const Delete_Measurement = 'Delete_Measurement';
 
 const guidGenerator = () => {
   var S4 = function(){
@@ -8,13 +9,21 @@ const guidGenerator = () => {
 };
 
 export const saveMeasurements = (measurementTxt, usersPoints) => {
-  console.log(measurementTxt, usersPoints);
   return {
     type: Save_Measurements,
     data: {
       measurementId: guidGenerator(),
       measurementTxt,
       usersPoints,
+    },
+  };
+};
+
+export const deleteMeasurement = itemId => {
+  return {
+    type: Delete_Measurement,
+    data: {
+      itemId,
     },
   };
 };

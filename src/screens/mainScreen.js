@@ -6,11 +6,13 @@ import {
   FlatList,
   SafeAreaView,
 } from 'react-native';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {deleteMeasurement} from '../actions/gpsActions';
 
 import styles from './styles';
 
 function MainScreen({navigation}) {
+  const dispatch = useDispatch();
   const {allMeasurements} = useSelector(state => state.userMeasurements);
 
   const calculateDistance = points => {
@@ -37,8 +39,8 @@ function MainScreen({navigation}) {
     }
   };
 
-  const handleDelete = () => {
-    console.log('delete measurement');
+  const handleDelete = itemId => {
+    dispatch(deleteMeasurement(itemId));
   };
 
   const renderMeasurements = ({item}) => {
@@ -50,7 +52,7 @@ function MainScreen({navigation}) {
         </Text>
         <TouchableOpacity
           style={styles.deleteEditBtns}
-          onPress={() => handleDelete()}>
+          onPress={() => handleDelete(item.measurementId)}>
           <Text style={styles.startText}>Delete</Text>
         </TouchableOpacity>
         <TouchableOpacity
