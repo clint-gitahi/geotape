@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import RNLocation from 'react-native-location';
+import {useDispatch} from 'react-redux';
+import {saveMeasurements} from '../actions/gpsActions';
 
 import colors from '../colors';
 import styles from './styles';
@@ -19,6 +21,8 @@ function NewMeasurements() {
     pointA: {},
     pointB: {},
   });
+
+  const dispatch = useDispatch();
 
   const permissionHandle = async userPoint => {
     let permission = await RNLocation.checkPermission({
@@ -54,6 +58,10 @@ function NewMeasurements() {
         [userPoint]: location,
       });
     }
+  };
+
+  const handleSave = () => {
+    dispatch(saveMeasurements(measurementTxt, usersPoints));
   };
 
   return (
@@ -97,7 +105,7 @@ function NewMeasurements() {
 
       <TouchableOpacity
         style={styles.saveButton}
-        onPress={() => console.log(measurementTxt)}>
+        onPress={() => handleSave()}>
         <Text style={styles.saveText}>Save</Text>
       </TouchableOpacity>
     </View>
