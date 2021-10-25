@@ -15,10 +15,12 @@ RNLocation.configure({
 
 function NewMeasurements() {
   const [measurementTxt, setMeasurementTxt] = React.useState('');
-  const [pointA, setPointA] = React.useState({});
-  const [pointB, setPointB] = React.useState({});
+  const [usersPoints, setUserPoints] = React.useState({
+    pointA: {},
+    pointB: {},
+  });
 
-  const permissionHandle = async (point) => {
+  const permissionHandle = async userPoint => {
     let permission = await RNLocation.checkPermission({
       ios: 'whenInUse',
       android: {
@@ -41,10 +43,16 @@ function NewMeasurements() {
         },
       });
       location = await RNLocation.getLatestLocation({timeout: 100});
-      console.log('LOCATION 1', location);
+      setUserPoints({
+        ...usersPoints,
+        [userPoint]: location,
+      });
     } else {
       location = await RNLocation.getLatestLocation({timeout: 100});
-      console.log('LOCATION 2', location);
+      setUserPoints({
+        ...usersPoints,
+        [userPoint]: location,
+      });
     }
   };
 
@@ -64,14 +72,26 @@ function NewMeasurements() {
       <View style={styles.gpsPoints}>
         <Text>Point A</Text>
         <TouchableOpacity onPress={() => permissionHandle('pointA')}>
-          <Text>Record GPS Location</Text>
+          {Object.keys(usersPoints.pointA).length === 0 ? (
+            <Text>Record GPS Location</Text>
+          ) : (
+            <Text>
+              {usersPoints.pointA.latitude}, {usersPoints.pointA.longitude}
+            </Text>
+          )}
         </TouchableOpacity>
       </View>
 
       <View style={styles.gpsPoints}>
         <Text>Point B</Text>
         <TouchableOpacity onPress={() => permissionHandle('pointB')}>
-          <Text>Record GPS Location</Text>
+          {Object.keys(usersPoints.pointB).length === 0 ? (
+            <Text>Record GPS Location</Text>
+          ) : (
+            <Text>
+              {usersPoints.pointB.latitude}, {usersPoints.pointB.longitude}
+            </Text>
+          )}
         </TouchableOpacity>
       </View>
 
