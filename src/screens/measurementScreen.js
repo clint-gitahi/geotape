@@ -1,5 +1,11 @@
 import * as React from 'react';
-import {View, Text, TouchableOpacity, TextInput, SafeAreaView} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  SafeAreaView,
+} from 'react-native';
 import RNLocation from 'react-native-location';
 import {useDispatch} from 'react-redux';
 import {saveMeasurements} from '../actions/gpsActions';
