@@ -57,7 +57,7 @@ function MainScreen({navigation}) {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.deleteEditBtns}
-          onPress={() => console.log('Edit')}>
+          onPress={() => navigation.navigate('editMeasurement', {item})}>
           <Text style={styles.startText}>Edit</Text>
         </TouchableOpacity>
       </View>
