@@ -9,8 +9,16 @@ const Stack = createStackNavigator();
 function AppScreens() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="mainscreen" component={MainScreen} />
-      <Stack.Screen name="newMeasurements" component={NewMeasurements} />
+      <Stack.Screen
+        name="mainscreen"
+        component={MainScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="newMeasurements"
+        component={NewMeasurements}
+        options={{headerTitle: false, headerBackTitle: false}}
+      />
     </Stack.Navigator>
   );
 }

@@ -1,8 +1,6 @@
 export default {
   black: '#000',
   white: '#fff',
-  green: '#3BB300',
-  greenSelect: '#E0FFFF',
-  greenLighter: '#BBFF99',
-  greenLight: '#2E8900',
+  green: '#1AC87B',
+  greenLight: 'rgba(26,200,123,0.5)',
 };
