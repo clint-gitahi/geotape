@@ -39,7 +39,8 @@ const styles = StyleSheet.create({
   },
   gpsPoints: {
     flexDirection: 'row',
-  }
+    justifyContent: 'space-around',
+  },
 });
 
 export default styles;
