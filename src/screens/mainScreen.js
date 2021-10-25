@@ -48,7 +48,7 @@ function MainScreen({navigation}) {
       <View style={styles.listMeasure}>
         <Text style={styles.measurementTxt}>{item.measurementTxt}</Text>
         <Text style={styles.distance}>
-          {calculateDistance(item.usersPoints)}
+          {calculateDistance(item.usersPoints)} km
         </Text>
         <TouchableOpacity
           style={styles.deleteEditBtns}
