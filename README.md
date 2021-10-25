@@ -7,7 +7,9 @@ cd geotape
 yarn install
 cd ios && pod install
 
-npx react-native run-android or npx react-native run-ios
+run npx react-native start in one window the 
+
+npx react-native run-android or npx react-native run-ios on a separate window
 
 ```
 The app will open up, navigate to add new points and get the calculated distance.
